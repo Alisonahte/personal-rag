@@ -36,7 +36,14 @@ class RagService:
             raise ValueError("LLM_API_KEY is not configured; use generate=false for retrieval-only demo")
         else:
             context = "\n\n".join(f'[{r["citation"]}] 文件：{r["source"]}，第{r["page"]}页\n{r["text"]}' for r in sources)
-            response = httpx.post(self.base_url.rstrip("/") + "/chat/completions", headers={"Authorization": f"Bearer {self.key}"}, json={"model": self.model, "temperature": 0, "messages": [{"role": "system", "content": SYSTEM}, {"role": "user", "content": f"问题：{question}\n\n<资料>\n{context}\n</资料>"}]}, timeout=60)
+            for attempt in range(3):
+                try:
+                    response = httpx.post(self.base_url.rstrip("/") + "/chat/completions", headers={"Authorization": f"Bearer {self.key}"}, json={"model": self.model, "temperature": 0, "messages": [{"role": "system", "content": SYSTEM}, {"role": "user", "content": f"问题：{question}\n\n<资料>\n{context}\n</资料>"}]}, timeout=60)
+                    break
+                except (httpx.ConnectError, httpx.ConnectTimeout):
+                    if attempt == 2:
+                        raise
+                    time.sleep(0.5 * (2 ** attempt))
             response.raise_for_status()
             answer, mode = response.json()["choices"][0]["message"]["content"], "llm"
         return {"answer": answer, "mode": mode, "sources": sources, "retrieval_ms": round(retrieval_ms, 2), "total_ms": round((time.perf_counter() - started) * 1000, 2)}
@@ -51,4 +58,5 @@ def from_env():
         raise ValueError("RAG_BACKEND must be chroma or lexical")
     store = LexicalStore(directory) if backend == "lexical" else ChromaStore(directory, os.getenv("EMBEDDING_MODEL", "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"))
     return RagService(store, os.getenv("LLM_API_KEY", ""), os.getenv("LLM_BASE_URL", "https://api.deepseek.com"), os.getenv("LLM_MODEL", "deepseek-flash"))
+
 

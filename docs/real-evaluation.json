@@ -1,0 +1,182 @@
+{
+  "cases": 6,
+  "evidence_hit_at_4": 1,
+  "mean_retrieval_ms": 270.3016666666667,
+  "note": "6 toy cases; no general accuracy claim. Manually grade generated answers for factual support and citations.",
+  "results": [
+    {
+      "question": "项目截止日期是什么时候？",
+      "expected_evidence": "12 月 20 日",
+      "hit_at_4": true,
+      "answer": "数据库课程的期末项目提交截止日期是 **12 月 20 日**。[1]",
+      "mode": "llm",
+      "sources": [
+        {
+          "citation": 1,
+          "id": "aba2ced08a3dfabe3bdf7e1619dcb0ab1a271856f5dfc60d3c67899ad112d6ac",
+          "text": "# 数据库课程说明\n数据库课程的期末项目提交截止日期是 12 月 20 日。\n期末项目占总成绩的 40%，平时作业占 30%，期末考试占 30%。\n项目报告需要包含需求分析、ER 图、表结构设计、SQL 查询和测试结果。\n\n# 课程实验\n数据库实验使用 PostgreSQL。每组最多三人，需要在报告中注明分工。",
+          "source": "course.md",
+          "page": 1,
+          "chunk": 0,
+          "score": 0.5485084652900696
+        },
+        {
+          "citation": 2,
+          "id": "1ec26fe0a119357f3f0a20205446867040c804a208689a2173936e2e1111eff4",
+          "text": "# Agent 学习资料\nReAct 循环交替进行模型决策、工具执行和结果观察，直到完成任务或达到步数上限。\n工具调用是模型生成结构化参数，宿主程序校验参数并真正执行函数。\n权限门禁负责限制执行权限；提示词本身不能替代操作系统沙箱。",
+          "page": 1,
+          "chunk": 0,
+          "source": "agent.md",
+          "score": 0.2171444296836853
+        }
+      ],
+      "retrieval_ms": 336.74,
+      "total_ms": 16100.67
+    },
+    {
+      "question": "期末项目占多少成绩？",
+      "expected_evidence": "40%",
+      "hit_at_4": true,
+      "answer": "期末项目占总成绩的 **40%** [1]。",
+      "mode": "llm",
+      "sources": [
+        {
+          "citation": 1,
+          "id": "aba2ced08a3dfabe3bdf7e1619dcb0ab1a271856f5dfc60d3c67899ad112d6ac",
+          "text": "# 数据库课程说明\n数据库课程的期末项目提交截止日期是 12 月 20 日。\n期末项目占总成绩的 40%，平时作业占 30%，期末考试占 30%。\n项目报告需要包含需求分析、ER 图、表结构设计、SQL 查询和测试结果。\n\n# 课程实验\n数据库实验使用 PostgreSQL。每组最多三人，需要在报告中注明分工。",
+          "page": 1,
+          "chunk": 0,
+          "source": "course.md",
+          "score": 0.6178829669952393
+        },
+        {
+          "citation": 2,
+          "id": "1ec26fe0a119357f3f0a20205446867040c804a208689a2173936e2e1111eff4",
+          "text": "# Agent 学习资料\nReAct 循环交替进行模型决策、工具执行和结果观察，直到完成任务或达到步数上限。\n工具调用是模型生成结构化参数，宿主程序校验参数并真正执行函数。\n权限门禁负责限制执行权限；提示词本身不能替代操作系统沙箱。",
+          "chunk": 0,
+          "source": "agent.md",
+          "page": 1,
+          "score": 0.27222740650177
+        }
+      ],
+      "retrieval_ms": 195.64,
+      "total_ms": 25483.02
+    },
+    {
+      "question": "实验使用哪种数据库？",
+      "expected_evidence": "PostgreSQL",
+      "hit_at_4": true,
+      "answer": "实验使用 **PostgreSQL** [1]。",
+      "mode": "llm",
+      "sources": [
+        {
+          "citation": 1,
+          "id": "aba2ced08a3dfabe3bdf7e1619dcb0ab1a271856f5dfc60d3c67899ad112d6ac",
+          "text": "# 数据库课程说明\n数据库课程的期末项目提交截止日期是 12 月 20 日。\n期末项目占总成绩的 40%，平时作业占 30%，期末考试占 30%。\n项目报告需要包含需求分析、ER 图、表结构设计、SQL 查询和测试结果。\n\n# 课程实验\n数据库实验使用 PostgreSQL。每组最多三人，需要在报告中注明分工。",
+          "chunk": 0,
+          "page": 1,
+          "source": "course.md",
+          "score": 0.5621017217636108
+        },
+        {
+          "citation": 2,
+          "id": "1ec26fe0a119357f3f0a20205446867040c804a208689a2173936e2e1111eff4",
+          "text": "# Agent 学习资料\nReAct 循环交替进行模型决策、工具执行和结果观察，直到完成任务或达到步数上限。\n工具调用是模型生成结构化参数，宿主程序校验参数并真正执行函数。\n权限门禁负责限制执行权限；提示词本身不能替代操作系统沙箱。",
+          "page": 1,
+          "chunk": 0,
+          "source": "agent.md",
+          "score": 0.41451048851013184
+        }
+      ],
+      "retrieval_ms": 253.0,
+      "total_ms": 10158.48
+    },
+    {
+      "question": "每个小组可以有几个人？",
+      "expected_evidence": "三人",
+      "hit_at_4": true,
+      "answer": "根据资料，每组最多 **3 人**；资料未说明最少人数。[1]",
+      "mode": "llm",
+      "sources": [
+        {
+          "citation": 1,
+          "id": "aba2ced08a3dfabe3bdf7e1619dcb0ab1a271856f5dfc60d3c67899ad112d6ac",
+          "text": "# 数据库课程说明\n数据库课程的期末项目提交截止日期是 12 月 20 日。\n期末项目占总成绩的 40%，平时作业占 30%，期末考试占 30%。\n项目报告需要包含需求分析、ER 图、表结构设计、SQL 查询和测试结果。\n\n# 课程实验\n数据库实验使用 PostgreSQL。每组最多三人，需要在报告中注明分工。",
+          "chunk": 0,
+          "page": 1,
+          "source": "course.md",
+          "score": 0.22456759214401245
+        },
+        {
+          "citation": 2,
+          "id": "1ec26fe0a119357f3f0a20205446867040c804a208689a2173936e2e1111eff4",
+          "text": "# Agent 学习资料\nReAct 循环交替进行模型决策、工具执行和结果观察，直到完成任务或达到步数上限。\n工具调用是模型生成结构化参数，宿主程序校验参数并真正执行函数。\n权限门禁负责限制执行权限；提示词本身不能替代操作系统沙箱。",
+          "chunk": 0,
+          "page": 1,
+          "source": "agent.md",
+          "score": 0.10973381996154785
+        }
+      ],
+      "retrieval_ms": 262.07,
+      "total_ms": 5352.59
+    },
+    {
+      "question": "ReAct 循环是什么？",
+      "expected_evidence": "工具执行",
+      "hit_at_4": true,
+      "answer": "ReAct 循环是一种交替执行的过程：模型决策 → 工具执行 → 结果观察，如此循环，直到完成任务或达到步数上限 [1]。",
+      "mode": "llm",
+      "sources": [
+        {
+          "citation": 1,
+          "id": "1ec26fe0a119357f3f0a20205446867040c804a208689a2173936e2e1111eff4",
+          "text": "# Agent 学习资料\nReAct 循环交替进行模型决策、工具执行和结果观察，直到完成任务或达到步数上限。\n工具调用是模型生成结构化参数，宿主程序校验参数并真正执行函数。\n权限门禁负责限制执行权限；提示词本身不能替代操作系统沙箱。",
+          "page": 1,
+          "chunk": 0,
+          "source": "agent.md",
+          "score": 0.44904255867004395
+        },
+        {
+          "citation": 2,
+          "id": "aba2ced08a3dfabe3bdf7e1619dcb0ab1a271856f5dfc60d3c67899ad112d6ac",
+          "text": "# 数据库课程说明\n数据库课程的期末项目提交截止日期是 12 月 20 日。\n期末项目占总成绩的 40%，平时作业占 30%，期末考试占 30%。\n项目报告需要包含需求分析、ER 图、表结构设计、SQL 查询和测试结果。\n\n# 课程实验\n数据库实验使用 PostgreSQL。每组最多三人，需要在报告中注明分工。",
+          "source": "course.md",
+          "chunk": 0,
+          "page": 1,
+          "score": 0.25669050216674805
+        }
+      ],
+      "retrieval_ms": 255.69,
+      "total_ms": 8310.67
+    },
+    {
+      "question": "权限门禁能代替沙箱吗？",
+      "expected_evidence": "不能",
+      "hit_at_4": true,
+      "answer": "资料不足，无法判断“权限门禁能否代替沙箱”。资料仅说明：权限门禁负责限制执行权限；提示词本身不能替代操作系统沙箱 [1]。",
+      "mode": "llm",
+      "sources": [
+        {
+          "citation": 1,
+          "id": "1ec26fe0a119357f3f0a20205446867040c804a208689a2173936e2e1111eff4",
+          "text": "# Agent 学习资料\nReAct 循环交替进行模型决策、工具执行和结果观察，直到完成任务或达到步数上限。\n工具调用是模型生成结构化参数，宿主程序校验参数并真正执行函数。\n权限门禁负责限制执行权限；提示词本身不能替代操作系统沙箱。",
+          "page": 1,
+          "chunk": 0,
+          "source": "agent.md",
+          "score": 0.1561436653137207
+        },
+        {
+          "citation": 2,
+          "id": "aba2ced08a3dfabe3bdf7e1619dcb0ab1a271856f5dfc60d3c67899ad112d6ac",
+          "text": "# 数据库课程说明\n数据库课程的期末项目提交截止日期是 12 月 20 日。\n期末项目占总成绩的 40%，平时作业占 30%，期末考试占 30%。\n项目报告需要包含需求分析、ER 图、表结构设计、SQL 查询和测试结果。\n\n# 课程实验\n数据库实验使用 PostgreSQL。每组最多三人，需要在报告中注明分工。",
+          "chunk": 0,
+          "page": 1,
+          "source": "course.md",
+          "score": -0.009162545204162598
+        }
+      ],
+      "retrieval_ms": 318.67,
+      "total_ms": 17620.49
+    }
+  ]
+}

@@ -37,3 +37,20 @@ def test_llm_receives_evidence_and_returns_citation(tmp_path, monkeypatch):
     answer = service.ask("期末项目")
     assert answer["mode"] == "llm"
     assert answer["answer"].endswith("[1]")
+
+
+def test_connection_retry_is_bounded(tmp_path, monkeypatch):
+    import httpx
+    import pytest
+    service = RagService(LexicalStore(tmp_path), api_key="test-placeholder")
+    service.ingest("a.txt", b"hello")
+    calls = []
+    def failed(*args, **kwargs):
+        calls.append(1)
+        raise httpx.ConnectError("offline")
+    monkeypatch.setattr("rag.service.httpx.post", failed)
+    monkeypatch.setattr("rag.service.time.sleep", lambda _: None)
+    with pytest.raises(httpx.ConnectError):
+        service.ask("hello")
+    assert len(calls) == 3
+
